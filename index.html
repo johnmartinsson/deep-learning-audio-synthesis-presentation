@@ -50,11 +50,10 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
-          // audio-slideshow dependencies
-          { src: 'plugin/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },        
-          { src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },        
-          { src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },
+          { src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
+          { src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } }
 				]
 			});
 		</script>
