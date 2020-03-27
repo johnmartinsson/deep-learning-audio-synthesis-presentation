@@ -80,10 +80,10 @@
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugins/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },				
-					{ src: 'plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
-					{ src: 'plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
-					{ src: 'plugins/menu/menu.js' },
+					{ src: 'plugin/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },				
+					{ src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
+					{ src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+					{ src: 'plugin/menu/menu.js' },
 				],
 				keyboard: { 
 					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
