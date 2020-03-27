@@ -25,6 +25,14 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<section>
+					<p>
+						With audio slideshows you can add recorded audio to whatever you want to deliver to your audience. 
+					</p>
+					<p class ="fragment" data-audio-src="audio/melgan.ogg">
+						Listen to melgan
+					</p>
+				</section>
 				<section>Slide 1</section>
 				<section>Slide 2</section>
 			</div>
@@ -43,6 +51,10 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
 					{ src: 'plugin/notes/notes.js', async: true }
+          // audio-slideshow dependencies
+          { src: 'plugin/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },        
+          { src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },        
+          { src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 				]
 			});
 		</script>
