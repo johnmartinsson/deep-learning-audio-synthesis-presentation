@@ -81,75 +81,6 @@
         </section>
 
         <section>
-          <ul>
-            <li> something-to-symbolic models (assumes pre-predefined symbolic-to-sound mapping)</li>
-            <li> symbolic-to-sound models (assumes pre-defined something-to-symbolic mapping)</li>
-            <li> something-to-sound models (assumes a lot of data and computational power) <li>
-          </ul>
-          <aside class="notes">
-            So, a progress has been made on models that takes something
-            as input, for example noise and an explicit or implicit class of
-            sound, and outputs a symbolic representation of that sound class.
-            (TODO: examples?), we have also made progress on symbolic-to-sound
-            models, both learned from data, and defined by some well known model
-            of that sound class, but we have only just begun to make progress on
-            something-to-sound models, that take as input, for example a sound
-            class, and outputs sound. This is all very vague, so lets make this
-            a bit more precise.
-          </aside>
-        </section>
-        <section>
-          TODO: add a nice image of the two different types.
-          <ul>
-            <li> sparse condition </li>
-            <li> dense condition </li>
-          </ul>
-          <aside class="notes">
-            I like the categorization that Dielman does in his blog-post of
-            different types of conditioning inputs. He defines a sparse
-            condition as a condition that reduces the uncertainty of the correct
-            output very little, and a dense condition as a condition that
-            reduces the uncertainty of the correct output a lot. Basically, we
-            say that we have a sparse condtiion if the input contains little
-            information about the correct output, and we have a dense condition
-            if the input contains a lot of information about the output.
-          </aside>
-        </section>
-
-        <section>
-          TODO: add a nice image of the two different types.
-          <ul>
-            <li> sparse output: e.g., generate symbolic representation of sound </li>
-            <li> dense output: e.g., generate actual waveform of sound </li>
-          </ul>
-          <aside class="notes">
-            I think that we could make a similar categorization of the thing we
-            want to model. So, lets say that we have a sparse output if the
-            thing we model contains little information about what we ultimately
-            want to model, and a dense output if the thing we model contains a
-            lot of information about the thing we ultimately want to model.
-          </aside>
-        </section>
-
-        <section>
-          <ul>
-            <li> dense condition and sparse output: e.g., waveform to piano-roll (easy) </li>
-            <li> sparse condition and sparse output: e.g., noise to piano-roll, MIDI</li>
-            <li> dense condition and dense output: e.g., text or spectrogram to waveform </li>
-            <li> sparse condition and dense output: e.g., noise to waveform (hard) </li>
-          </ul>
-          <aside class="notes">
-            Now that we have a common terminology we can try to categorize
-            different problems into how hard they are. There is no precise
-            distinction between sparse and dense here, but I thought that it was
-            a nice way to think about it. A lot of progress has been made on
-            sparse condition and sparse output models, and dense condition and
-            dense output models, and we are starting to see progress on sparse
-            condition and dense output models in audio synthesis.
-          </aside>
-        </section>
-
-        <section>
           <h3> Why waveforms? </h3>
           <ul>
             <li> for human and computational analysis we often use <b>spectrograms</b> </li>
@@ -234,6 +165,74 @@
             audio, which is not as much of a problem in the image domain, 
           </aside>
         </section>
+
+        <section>
+          <h3> Generative models </h3>
+          <ul>
+            <li> Dataset $X$ of examples $x \in X$ </li>
+            <li> $x \sim p_{X}(x)$ </li>
+          </ul>
+          <aside class="notes">
+            So, a progress has been made on models that takes something
+            as input, for example noise and an explicit or implicit class of
+            sound, and outputs a symbolic representation of that sound class.
+            (TODO: examples?), we have also made progress on symbolic-to-sound
+            models, both learned from data, and defined by some well known model
+            of that sound class, but we have only just begun to make progress on
+            something-to-sound models, that take as input, for example a sound
+            class, and outputs sound. This is all very vague, so lets make this
+            a bit more precise.
+          </aside>
+        </section>
+
+        <section>
+          TODO: add a nice image of the two different types.
+          <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
+          <aside class="notes">
+            I like the categorization that Dielman does in his blog-post of
+            different types of conditioning inputs. He defines a sparse
+            condition as a condition that reduces the uncertainty of the correct
+            output very little, and a dense condition as a condition that
+            reduces the uncertainty of the correct output a lot. Basically, we
+            say that we have a sparse condtiion if the input contains little
+            information about the correct output, and we have a dense condition
+            if the input contains a lot of information about the output.
+          </aside>
+        </section>
+
+        <section>
+          TODO: add a nice image of the two different types.
+          <ul>
+            <li> sparse output: e.g., generate symbolic representation of sound </li>
+            <li> dense output: e.g., generate actual waveform of sound </li>
+          </ul>
+          <aside class="notes">
+            I think that we could make a similar categorization of the thing we
+            want to model. So, lets say that we have a sparse output if the
+            thing we model contains little information about what we ultimately
+            want to model, and a dense output if the thing we model contains a
+            lot of information about the thing we ultimately want to model.
+          </aside>
+        </section>
+
+        <section>
+          <ul>
+            <li> dense condition and sparse output: e.g., waveform to piano-roll (easy) </li>
+            <li> sparse condition and sparse output: e.g., noise to piano-roll, MIDI</li>
+            <li> dense condition and dense output: e.g., text or spectrogram to waveform </li>
+            <li> sparse condition and dense output: e.g., noise to waveform (hard) </li>
+          </ul>
+          <aside class="notes">
+            Now that we have a common terminology we can try to categorize
+            different problems into how hard they are. There is no precise
+            distinction between sparse and dense here, but I thought that it was
+            a nice way to think about it. A lot of progress has been made on
+            sparse condition and sparse output models, and dense condition and
+            dense output models, and we are starting to see progress on sparse
+            condition and dense output models in audio synthesis.
+          </aside>
+        </section>
+
 
         <section>
           <ul>
