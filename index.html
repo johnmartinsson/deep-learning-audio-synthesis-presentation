@@ -159,8 +159,7 @@
 
         <section>
           <h3> Why waveforms? </h3>
-          <p> Spectrograms are complex-valued: represent both amplitude and
-          the phase </p>
+          <p> Spectrograms represent both amplitude and the phase </p>
           <img src="https://benanne.github.io/images/spectrogram_magnitude.png" class="fragment">
           <img src="https://benanne.github.io/images/spectrogram_phase.png" class="fragment">
           <p class ="fragment" data-audio-src="https://benanne.github.io/files/original_phase.wav"> </p>
@@ -186,12 +185,54 @@
             would all agree that it sounds off.
           </aside>
         </section>
+        <section>
+          <h3> Why waveforms? </h3>
+          <ul>
+            <li> it is an <b>angle</b>: $\phi \in [0,2\pi) and it wraps around, </li>
+            <li> <b>effectively random</b> as amplitude tends to 0, </li>
+            <li> absolute phase less meaningful, </li>
+            <li> relative phase matter perceptually, </li>
+          </ul>
+          <aside class="notes">
+          </aside>
+        </section>
 
         <section>
-          <h3> Challenges for machine learning? </h3>
+          <h3> Why waveforms? </h3>
           <ul>
-            <li> </li>
+            <li> by modelling the waveform we are implicitly modelling the phase </li>
+            <li> waveform modelling most common in the generative setting </li>
+            <li> magnitude spectrograms most common in the discriminative setting </li>
           </ul>
+          <aside class="notes">
+          </aside>
+        </section>
+
+
+
+        <section>
+          <h3> Challenges for machine learning to model waveforms? </h3>
+          <ul>
+            TODO: add image, write about mapping an image to a line and how this
+            affects the problem, reason about why spectrograms seem reasonable
+            for the prediction task.
+            <li> high dimensional data </li>
+            <li> long ranging dependencies </li>
+            <li> cyclic dependencies </li>
+          </ul>
+          <aside class="notes">
+            If we only consider few second segments of audio at a 44kHz sample
+            rate the resolution is comparable to a high resolution image, and we
+            are making substantial progress on high resolution images, so I
+            think that this argument is a bit overplayed. State-of-the-art image
+            generation models can generate images with up to a million
+            dimensions, 1024x1024 pixels, which would correspond to sound
+            segments of 22 seconds at 44kHz, and we are struggling with segments
+            of a couple of seconds at 16KHz. It is still very high dimensional
+            data, but possibly not the whole story of why it is challenging. A
+            clear difference is that we have very long ranging dependencies in
+            audio, which is not as much of a problem in the image domain, 
+          </aside>
         </section>
 
         <section>
@@ -269,6 +310,7 @@
 					{ src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 					{ src: 'plugin/menu/menu.js' },
 					{ src: 'plugin/notes/notes.js' },
+					{ src: 'plugin/math/math.js' },
 				],
 				keyboard: { 
 					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
