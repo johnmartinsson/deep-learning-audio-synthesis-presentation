@@ -26,7 +26,19 @@
 		<div class="reveal">
 			<div class="slides">
         <section>
-          <h2> Overview of audio synthesis using deep learning </h2>
+          <h3> Audio waveform synthesis using deep learning </h3>
+          We will go through:
+          <ul>
+            <li> motivation </li>
+            <li> introduction to sound and acoustics, </li>
+            <li> some challenges with audio synthesis, </li>
+            <li> categorization of audio synthesis methods, and </li>
+            <li> take a look at a recently proposed method. </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Overview of audio synthesis using deep learning </h3>
           <ul>
             <li> Reference: "Generating music in the waveform domain", by
               Sander Dieleman </li>
@@ -35,59 +47,67 @@
         </section>
 
         <section>
-          <h2> Why audio? </h2>
-          <ul>
-            <li> models that take symbolic input and outputs a waveform </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2> Why audio?</h2>
+          <h3> Why audio?</h3>
           <img src="https://benanne.github.io/images/player_piano.jpg">
         </section>
 
         <section>
-          <h2> Why audio? </h2>
+          <h3> Why audio? </h3>
           <img src="https://benanne.github.io/images/piano_roll.jpg">
+          <ul>
+            <li> captures many degrees of freedom for a piano </li>
+            <li> what if we have many more degrees of freedom? </li>
+          </ul>
         </section>
 
         <section>
-          <h2> Why waveforms? </h2>
-          <img src="https://benanne.github.io/images/spectrogram_magnitude.png">
-          <img src="https://benanne.github.io/images/spectrogram_phase.png">
+          <h3> Why waveforms? </h3>
+          <ul>
+            <li> encoding the shape of the waveform as it changes over time, </li>
+            <li> for human and computational analysis we often use <b>spectrograms</b> </li>
+            <li> shows the <b> local frequency content of the signal over time </b></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Why waveforms? </h3>
+          <img src="https://benanne.github.io/images/spectrogram_magnitude.png" class="fragment">
+          <img src="https://benanne.github.io/images/spectrogram_phase.png" class="fragment">
           <p class ="fragment" data-audio-src="https://benanne.github.io/files/original_phase.wav"> </p>
           <p class ="fragment" data-audio-src="https://benanne.github.io/files/random_phase.wav"> </p>
         </section>
 
         <section>
-          <h2> What is audio? </h2>
-          <ul>
-            <li> continuous local variations in pressure </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2> What is digital audio? </h2>
-          <ul>
-            <li> discrete measurements of variations in pressure </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2> Challenges for machine learning? </h2>
+          <h3> Challenges for machine learning? </h3>
           <ul>
             <li> </li>
           </ul>
         </section>
 
         <section>
-          <h2> Traditional audio synthesis </h2>
+          <ul>
+            <li> likelihood-based models, </li>
+            <li> adversarial models, </li>
+          </ul>
+        </section>
+
+        <section>
+          <ul>
+            <li> mode-covering, </li>
+            <li> mode-seeking, </li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h3> Traditional audio synthesis </h3>
           <ul>
             <li> speech synthesis: text to speech </li>
             <li> music synthesis: MIDI to music </li>
             <li> symbolic representations </li>
           </ul>
         </section>
+
 
 			</div>
 		</div>
