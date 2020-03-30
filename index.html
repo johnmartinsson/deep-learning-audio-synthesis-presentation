@@ -40,8 +40,7 @@
         <section>
           <h3> Overview of audio synthesis using deep learning </h3>
           <ul>
-            <li> Reference: "Generating music in the waveform domain", by
-              Sander Dieleman </li>
+            <li> Reference: "Generating music in the waveform domain", by Sander Dieleman </li>
             <li> https://benanne.github.io/2020/03/24/audio-generation.html </li>
           </ul>
         </section>
@@ -49,6 +48,14 @@
         <section>
           <h3> Why audio?</h3>
           <img src="https://benanne.github.io/images/player_piano.jpg">
+          <aside class="notes">
+            Some traditional music synthesis models take a symbolic
+            representation of the audio as input and transforms this into sound.
+            Here, we are looking at a fairly old music synthesis model of a
+            piano, which takes a piano-roll as input and then the mechanical
+            machinery inside the piano translates the piano-roll into
+            pressing the correct piano keys. 
+          </aside>
         </section>
 
         <section>
@@ -58,12 +65,93 @@
             <li> captures many degrees of freedom for a piano </li>
             <li> what if we have many more degrees of freedom? </li>
           </ul>
+          <aside class="notes">
+            Today we have taken the step from such mechanical models towards
+            digital models that can translate the symbolic input into sound.
+            A lot of research on music generation has focused on modelling such
+            symbolic representations of the audio and then use pre-defined
+            models to transform the generated symbolic representation into
+            sound. This is a very reasonable first step, but in other domains
+            for audio generation, where we may not have access to models that
+            translates symbolic representations into audio, for example in
+            speech synthesis, we need to think about how we can create such
+            models. A research direction that has shown some promise the
+            last years is to learn these models from data.
+          </aside>
+        </section>
+
+        <section>
+          <ul>
+            <li> something-to-symbolic models (assumes pre-predefined symbolic-to-sound mapping)</li>
+            <li> symbolic-to-sound models (assumes pre-defined something-to-symbolic mapping)</li>
+            <li> something-to-sound models (assumes a lot of data and computational power) <li>
+          </ul>
+          <aside class="notes">
+            So, a progress has been made on models that takes something
+            as input, for example noise and an explicit or implicit class of
+            sound, and outputs a symbolic representation of that sound class.
+            (TODO: examples?), we have also made progress on symbolic-to-sound
+            models, both learned from data, and defined by some well known model
+            of that sound class, but we have only just begun to make progress on
+            something-to-sound models, that take as input, for example a sound
+            class, and outputs sound. This is all very vague, so lets make this
+            a bit more precise.
+          </aside>
+        </section>
+        <section>
+          TODO: add a nice image of the two different types.
+          <ul>
+            <li> sparse condition </li>
+            <li> dense condition </li>
+          </ul>
+          <aside class="notes">
+            I like the categorization that Dielman does in his blog-post of
+            different types of conditioning inputs. He defines a sparse
+            condition as a condition that reduces the uncertainty of the correct
+            output very little, and a dense condition as a condition that
+            reduces the uncertainty of the correct output a lot. Basically, we
+            say that we have a sparse condtiion if the input contains little
+            information about the correct output, and we have a dense condition
+            if the input contains a lot of information about the output.
+          </aside>
+        </section>
+
+        <section>
+          TODO: add a nice image of the two different types.
+          <ul>
+            <li> sparse output: e.g., generate symbolic representation of sound </li>
+            <li> dense output: e.g., generate actual waveform of sound </li>
+          </ul>
+          <aside class="notes">
+            I think that we could make a similar categorization of the thing we
+            want to model. So, lets say that we have a sparse output if the
+            thing we model contains little information about what we ultimately
+            want to model, and a dense output if the thing we model contains a
+            lot of information about the thing we ultimately want to model.
+          </aside>
+        </section>
+
+        <section>
+          <ul>
+            <li> dense condition and sparse output: e.g., waveform to piano-roll (easy) </li>
+            <li> sparse condition and sparse output: e.g., noise to piano-roll, MIDI</li>
+            <li> dense condition and dense output: e.g., text or spectrogram to waveform </li>
+            <li> sparse condition and dense output: e.g., noise to waveform (hard) </li>
+          </ul>
+          <aside class="notes">
+            Now that we have a common terminology we can try to categorize
+            different problems into how hard they are. There is no precise
+            distinction between sparse and dense here, but I thought that it was
+            a nice way to think about it. A lot of progress has been made on
+            sparse condition and sparse output models, and dense condition and
+            dense output models, and we are starting to see progress on sparse
+            condition and dense output models in audio synthesis.
+          </aside>
         </section>
 
         <section>
           <h3> Why waveforms? </h3>
           <ul>
-            <li> encoding the shape of the waveform as it changes over time, </li>
             <li> for human and computational analysis we often use <b>spectrograms</b> </li>
             <li> shows the <b> local frequency content of the signal over time </b></li>
           </ul>
@@ -71,10 +159,32 @@
 
         <section>
           <h3> Why waveforms? </h3>
+          <p> Spectrograms are complex-valued: represent both amplitude and
+          the phase </p>
           <img src="https://benanne.github.io/images/spectrogram_magnitude.png" class="fragment">
           <img src="https://benanne.github.io/images/spectrogram_phase.png" class="fragment">
           <p class ="fragment" data-audio-src="https://benanne.github.io/files/original_phase.wav"> </p>
           <p class ="fragment" data-audio-src="https://benanne.github.io/files/random_phase.wav"> </p>
+          <aside class="notes">
+            Spectrograms are complex-valued and represent both the amplitude and
+            the phase of the local frequency content of the signal over time.
+            Let's look at a visualization of the amplitude component. It
+            contains a lot of structure, and has been widely used for prediction
+            tasks on audio. I used the amplitude spectrogram during my master's
+            thesis to predict the species of a bird in a given sound recording.
+            What has largely been ignored is the phase component, which looks a
+            lot more like noise, and which has proven hard to model. When
+            extracting information from audio signals it turns out that we can
+            often just discart the phase component, but when we want to generate
+            sound it is very important because it affects our perception. Lets
+            listen to two piano pieces to make this clear. The first one I will
+            play is the original sound with the original amplitude and
+            phase component, and in the second example we will replace the phase
+            component with a random phase component. Harmony is preserved, but
+            the timbre changes completely. Note also that most of us would still
+            probably be able to classify the second sound as a piano, but we
+            would all agree that it sounds off.
+          </aside>
         </section>
 
         <section>
