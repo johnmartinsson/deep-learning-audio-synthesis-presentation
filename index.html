@@ -177,9 +177,42 @@
           <h3> Conditional generative models </h3>
           <ul>
             <li> Dataset $X,Y$ of examples $x \in X$ and $y \in Y$</li>
-            <li> $x,y \sim p_{X, Y}(x, y)$, assumed i.i.d </li>
-            <li> learn generative model $p_{X}(x|y; \theta)$ that approximates $p_{X}(x|y)$ </li>
+            <li> $y\sim p(y)$ and $x \sim p(x|y)$ </li>
+            <li> $x,y\sim p(x,y)$ </li>
+            <li> learn generative model $p(x|y; \theta)$ that approximates $p(x|y)$ </li>
+            <li> <i>explicit</i>: allows $p(x|y)$ and $x \sim p(x|y)$ </li>
+            <li> <i>implicit</i>: allows only $x \sim p(x|y)$ </li>
           </ul>
+        </section>
+
+        <section>
+          <h3> Different model settings </h3>
+          <ul>
+            <li> likelihood-based models </li>
+            <ul>
+              <li> autoregressive models </li>
+              <li> flow-based models </li>
+              <li> variational autoencoders</li>
+            </ul>
+            <li> <b>adversarial models</b> </li>
+          </ul>
+          <aside class="notes">
+            likelihood-based models are <i> explicit </i> models, meaning that
+            we can infer the likelihood of a given data point, and sample from
+            them. adversarial models are <i> implicit </i> models, meaning that
+            we can not infer the likelihood of a given data point, but we can
+            sample from them.
+          </aside>
+        </section>
+
+        <section>
+          <h3> Mode-covering vs. mode-seeking </h3>
+          <img src="https://benanne.github.io/images/mode_seeking_covering.png"> 
+          <aside class="notes">
+            roughly speaking we can make another distinction between these two
+            types of models. likelihood-based models tend to be mode-covering,
+            while adversarial models tend to be mode-seeking.
+          </aside>
         </section>
 
         <section>
@@ -262,36 +295,6 @@
           <ul>
             <li> WaveGAN </li>
           </ul>
-        </section>
-
-        <section>
-          <h3> Different model settings </h3>
-          <ul>
-            <li> likelihood-based models </li>
-            <ul>
-              <li> autoregressive models </li>
-              <li> flow-based models </li>
-              <li> variational autoencoders</li>
-            </ul>
-            <li> <b>adversarial models</b> </li>
-          </ul>
-          <aside class="notes">
-            likelihood-based models are <i> explicit </i> models, meaning that
-            we can infer the likelihood of a given data point, and sample from
-            them. adversarial models are <i> implicit </i> models, meaning that
-            we can not infer the likelihood of a given data point, but we can
-            sample from them.
-          </aside>
-        </section>
-
-        <section>
-          <h3> Mode-covering vs. mode-seeking </h3>
-          <img src="https://benanne.github.io/images/mode_seeking_covering.png"> 
-          <aside class="notes">
-            roughly speaking we can make another distinction between these two
-            types of models. likelihood-based models tend to be mode-covering,
-            while adversarial models tend to be mode-seeking.
-          </aside>
         </section>
 
         <section>
