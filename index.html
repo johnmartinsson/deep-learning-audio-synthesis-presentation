@@ -176,6 +176,9 @@
         <section>
           <h3> Conditional generative models </h3>
           <ul>
+            <li> Dataset $X,Y$ of examples $x \in X$ and $y \in Y$</li>
+            <li> $x,y \sim p_{X, Y}(x, y)$, assumed i.i.d </li>
+            <li> learn generative model $p_{X}(x|y; \theta)$ that approximates $p_{X}(x|y)$ </li>
           </ul>
         </section>
 
@@ -213,8 +216,8 @@
           <ul>
             <li> densely conditioned and sparsely generated output: e.g.,
               waveform to piano-roll (low variability) </li>
-            <li> sparse condition and sparse output: e.g., noise to piano-roll, MIDI</li>
-            <li> dense condition and dense output: e.g., text or spectrogram to waveform </li>
+            <li> sparse condition and sparse-ish output: e.g., noise to piano-roll, MIDI</li>
+            <li> dense-ish condition and dense output: e.g., text or spectrogram to waveform </li>
             <li> sparse condition and dense output: e.g., noise to waveform
               (high variability) </li>
           </ul>
@@ -234,6 +237,31 @@
             dense output models, and we are starting to see progress on sparse
             condition and dense output models in audio synthesis.
           </aside>
+        </section>
+
+        <section>
+          <h3> Sparse condition and sparse-ish output </h3>
+          <ul>
+            <li> Olofs stuff. </lu>
+            <li> Some other stuff. </lu>
+            <li> Some other stuff. </lu>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Dense-ish condition and dense output </h3>
+          <ul>
+            <li> WaveNet? </lu>
+            <li> text-to-speech </lu>
+            <li> midi-to-music </lu>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Sparse condition and dense output </h3>
+          <ul>
+            <li> WaveGAN </li>
+          </ul>
         </section>
 
         <section>
