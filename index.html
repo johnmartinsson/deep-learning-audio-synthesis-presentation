@@ -170,23 +170,18 @@
           <h3> Generative models </h3>
           <ul>
             <li> Dataset $X$ of examples $x \in X$ </li>
-            <li> $x \sim p_{X}(x)$ </li>
+            <li> $x \sim p_{X}(x)$, assumed i.i.d </li>
+            <li> learn generative model $p_{X}(x|\theta)$ that approximates $p_{X}(x)$ </li>
           </ul>
-          <aside class="notes">
-            So, a progress has been made on models that takes something
-            as input, for example noise and an explicit or implicit class of
-            sound, and outputs a symbolic representation of that sound class.
-            (TODO: examples?), we have also made progress on symbolic-to-sound
-            models, both learned from data, and defined by some well known model
-            of that sound class, but we have only just begun to make progress on
-            something-to-sound models, that take as input, for example a sound
-            class, and outputs sound. This is all very vague, so lets make this
-            a bit more precise.
-          </aside>
         </section>
 
         <section>
-          TODO: add a nice image of the two different types.
+          <h3> Conditional generative models </h3>
+          <ul>
+          </ul>
+        </section>
+
+        <section>
           <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
           <aside class="notes">
             I like the categorization that Dielman does in his blog-post of
@@ -201,51 +196,70 @@
         </section>
 
         <section>
-          TODO: add a nice image of the two different types.
-          <ul>
-            <li> sparse output: e.g., generate symbolic representation of sound </li>
-            <li> dense output: e.g., generate actual waveform of sound </li>
-          </ul>
+          TODO: change conditioned in image to generated
+          <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
           <aside class="notes">
             I think that we could make a similar categorization of the thing we
-            want to model. So, lets say that we have a sparse output if the
+            want to model. So, lets say that we have a sparsely generated output if the
             thing we model contains little information about what we ultimately
-            want to model, and a dense output if the thing we model contains a
+            want to model, and a densely generated output if the thing we model contains a
             lot of information about the thing we ultimately want to model.
           </aside>
         </section>
 
+
         <section>
           <ul>
-            <li> dense condition and sparse output: e.g., waveform to piano-roll (easy) </li>
+            <li> likelihood-based models </li>
+            <ul>
+              <li> autoregressive models </li>
+              <li> flow-based models </li>
+              <li> variational autoencoders</li>
+            </ul>
+            <li> <b>adversarial models</b> </li>
+          </ul>
+          <aside class="notes">
+            likelihood-based models are <i> explicit </i> models, meaning that
+            we can infer the likelihood of a given data point, and sample from
+            them. adversarial models are <i> implicit </i> models, meaning that
+            we can not infer the likelihood of a given data point, but we can
+            sample from them.
+          </aside>
+        </section>
+
+        <section>
+          <img src="https://benanne.github.io/images/mode_seeking_covering.png"> 
+          <aside class="notes">
+            roughly speaking we can make another distinction between these two
+            types of models. likelihood-based models tend to be mode-covering,
+            while adversarial models tend to be mode-seeking.
+          </aside>
+        </section>
+
+        <section>
+          TODO: translate this slide into an image.
+          <ul>
+            <li> densely conditioned and sparsely generated output: e.g., waveform to piano-roll (easy) </li>
             <li> sparse condition and sparse output: e.g., noise to piano-roll, MIDI</li>
             <li> dense condition and dense output: e.g., text or spectrogram to waveform </li>
             <li> sparse condition and dense output: e.g., noise to waveform (hard) </li>
           </ul>
           <aside class="notes">
-            Now that we have a common terminology we can try to categorize
-            different problems into how hard they are. There is no precise
-            distinction between sparse and dense here, but I thought that it was
-            a nice way to think about it. A lot of progress has been made on
+            Progress has been made on sparsely conditioned models with sparsely
+            generated output, for example noise and the music category we want
+            to model and output a symbolic representation of that music category.
+            (TODO: examples?), we have also made progress on 
+            models, both learned from data, and defined by some well known model
+            of that sound class, but we have only just begun to make progress on
+            something-to-sound models, that take as input, for example a sound
+            class, and outputs sound. This is all very vague, so lets make this
+            a bit more precise.
+
+            A lot of progress has been made on
             sparse condition and sparse output models, and dense condition and
             dense output models, and we are starting to see progress on sparse
             condition and dense output models in audio synthesis.
           </aside>
-        </section>
-
-
-        <section>
-          <ul>
-            <li> likelihood-based models, </li>
-            <li> adversarial models, </li>
-          </ul>
-        </section>
-
-        <section>
-          <ul>
-            <li> mode-covering, </li>
-            <li> mode-seeking, </li>
-          </ul>
         </section>
 
 
