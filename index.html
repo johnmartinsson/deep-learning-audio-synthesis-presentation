@@ -32,8 +32,8 @@
             <li> motivation </li>
             <li> introduction to sound and acoustics, </li>
             <li> some challenges with audio synthesis, </li>
-            <li> categorization of audio synthesis methods, and </li>
-            <li> take a look at a recently proposed method. </li>
+            <li> generative methods, and </li>
+            <li> take a look at a recently proposed adversarial methods. </li>
           </ul>
         </section>
 
@@ -63,16 +63,17 @@
           <img src="https://benanne.github.io/images/piano_roll.jpg">
           <ul>
             <li> captures many degrees of freedom for a piano </li>
-            <li> what if we have many more degrees of freedom? </li>
+            <li> what if we do not have the symbolic to audio model? </li>
           </ul>
           <aside class="notes">
-            Today we have taken the step from such mechanical models towards
-            digital models that can translate the symbolic input into sound.
-            A lot of research on music generation has focused on modelling such
+            With digitalization we have taken the step from such mechanical models towards
+            digital models that can translate the symbolic input into music or
+            audio.
+            Early research on music generation has focused on modelling such
             symbolic representations of the audio and then use pre-defined
             models to transform the generated symbolic representation into
             sound. This is a very reasonable first step, but in other domains
-            for audio generation, where we may not have access to models that
+            where we may not have access to models that
             translates symbolic representations into audio, for example in
             speech synthesis, we need to think about how we can create such
             models. A research direction that has shown some promise the
@@ -119,7 +120,7 @@
         <section>
           <h3> Why waveforms? </h3>
           <ul>
-            <li> it is an <b>angle</b>: $\phi \in [0,2\pi) and it wraps around, </li>
+            <li> it is an <b>angle</b>: $\phi \in [0,2\pi)$ and it wraps around, </li>
             <li> <b>effectively random</b> as amplitude tends to 0, </li>
             <li> absolute phase less meaningful, </li>
             <li> relative phase matter perceptually, </li>
@@ -138,8 +139,6 @@
           <aside class="notes">
           </aside>
         </section>
-
-
 
         <section>
           <h3> Challenges for machine learning to model waveforms? </h3>
@@ -182,6 +181,7 @@
         </section>
 
         <section>
+          <h3> Problem categorization </h3>
           <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
           <aside class="notes">
             I like the categorization that Dielman does in his blog-post of
@@ -196,6 +196,7 @@
         </section>
 
         <section>
+          <h3> Problem categorization </h3>
           TODO: change conditioned in image to generated
           <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
           <aside class="notes">
@@ -207,36 +208,8 @@
           </aside>
         </section>
 
-
         <section>
-          <ul>
-            <li> likelihood-based models </li>
-            <ul>
-              <li> autoregressive models </li>
-              <li> flow-based models </li>
-              <li> variational autoencoders</li>
-            </ul>
-            <li> <b>adversarial models</b> </li>
-          </ul>
-          <aside class="notes">
-            likelihood-based models are <i> explicit </i> models, meaning that
-            we can infer the likelihood of a given data point, and sample from
-            them. adversarial models are <i> implicit </i> models, meaning that
-            we can not infer the likelihood of a given data point, but we can
-            sample from them.
-          </aside>
-        </section>
-
-        <section>
-          <img src="https://benanne.github.io/images/mode_seeking_covering.png"> 
-          <aside class="notes">
-            roughly speaking we can make another distinction between these two
-            types of models. likelihood-based models tend to be mode-covering,
-            while adversarial models tend to be mode-seeking.
-          </aside>
-        </section>
-
-        <section>
+          <h3> Problem categorization </h3>
           TODO: translate this slide into an image.
           <ul>
             <li> densely conditioned and sparsely generated output: e.g., waveform to piano-roll (easy) </li>
@@ -262,16 +235,59 @@
           </aside>
         </section>
 
+        <section>
+          <h3> Different model settings </h3>
+          <ul>
+            <li> likelihood-based models </li>
+            <ul>
+              <li> autoregressive models </li>
+              <li> flow-based models </li>
+              <li> variational autoencoders</li>
+            </ul>
+            <li> <b>adversarial models</b> </li>
+          </ul>
+          <aside class="notes">
+            likelihood-based models are <i> explicit </i> models, meaning that
+            we can infer the likelihood of a given data point, and sample from
+            them. adversarial models are <i> implicit </i> models, meaning that
+            we can not infer the likelihood of a given data point, but we can
+            sample from them.
+          </aside>
+        </section>
 
         <section>
-          <h3> Traditional audio synthesis </h3>
+          <h3> Mode-covering vs. mode-seeking </h3>
+          <img src="https://benanne.github.io/images/mode_seeking_covering.png"> 
+          <aside class="notes">
+            roughly speaking we can make another distinction between these two
+            types of models. likelihood-based models tend to be mode-covering,
+            while adversarial models tend to be mode-seeking.
+          </aside>
+        </section>
+
+        <section>
+          <h3> WaveGAN and SpecGAN </h3>
           <ul>
-            <li> speech synthesis: text to speech </li>
-            <li> music synthesis: MIDI to music </li>
-            <li> symbolic representations </li>
+            <li> TODO: talk about WaveGAN and SpecGAN </li>
+            <li> listen to examples </li>
           </ul>
         </section>
 
+        <section>
+          <h3> MelGAN</h3>
+          <ul>
+            <li> TODO: talk about MelGAN </li>
+            <li> listen to examples </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> SpecGAN + MelGAN </h3>
+          <ul>
+            <li> TODO: talk about combining SpecGAN and MelGAN </li>
+            <li> listen to examples </li>
+          </ul>
+        </section>
 
 			</div>
 		</div>
