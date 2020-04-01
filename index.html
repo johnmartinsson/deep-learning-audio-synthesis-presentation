@@ -81,7 +81,7 @@
         </section>
 
         <section>
-          <h3> Why waveforms? </h3>
+          <h3> Frequency representation </h3>
           <ul>
             <li> for human and computational analysis we often use <b>spectrograms</b> </li>
             <li> shows the <b> local frequency content of the signal over time </b></li>
@@ -89,7 +89,7 @@
         </section>
 
         <section>
-          <h3> Why waveforms? </h3>
+          <h3> Frequency representation </h3>
           <p> Spectrograms represent both amplitude and the phase </p>
           <img src="https://benanne.github.io/images/spectrogram_magnitude.png" class="fragment">
           <img src="https://benanne.github.io/images/spectrogram_phase.png" class="fragment">
@@ -117,7 +117,7 @@
           </aside>
         </section>
         <section>
-          <h3> Why waveforms? </h3>
+          <h3> What is hard about the phase? </h3>
           <ul>
             <li> it is an <b>angle</b>: $\phi \in [0,2\pi)$ and it wraps around, </li>
             <li> <b>effectively random</b> as amplitude tends to 0, </li>
@@ -142,9 +142,6 @@
         <section>
           <h3> Challenges for machine learning to model waveforms? </h3>
           <ul>
-            TODO: add image, write about mapping an image to a line and how this
-            affects the problem, reason about why spectrograms seem reasonable
-            for the prediction task.
             <li> high dimensional data </li>
             <li> long ranging dependencies </li>
             <li> cyclic dependencies </li>
@@ -167,21 +164,21 @@
         <section>
           <h3> Generative models </h3>
           <ul>
-            <li> Dataset $X$ of examples $x \in X$ </li>
-            <li> $x \sim p_{X}(x)$, assumed i.i.d </li>
-            <li> learn generative model $p_{X}(x|\theta)$ that approximates $p_{X}(x)$ </li>
+            <li> Dataset $X$ of examples $x \in \mathcal{X}$ </li>
+            <li> $x \sim p(x)$, assumed i.i.d </li>
+            <li> learn generative model $p(x|\theta)$ that approximates $p(x)$ </li>
           </ul>
         </section>
 
         <section>
           <h3> Conditional generative models </h3>
           <ul>
-            <li> Dataset $X,Y$ of examples $x \in X$ and $y \in Y$</li>
-            <li> $y\sim p(y)$ and $x \sim p(x|y)$ </li>
+            <li> Dataset $X,Y$ of examples $x \in \mathcal{X}$ and $y \in
+              \mathcal{Y}$</li>
             <li> $x,y\sim p(x,y)$ </li>
             <li> learn generative model $p(x|y; \theta)$ that approximates $p(x|y)$ </li>
-            <li> <i>explicit</i>: allows $p(x|y)$ and $x \sim p(x|y)$ </li>
-            <li> <i>implicit</i>: allows only $x \sim p(x|y)$ </li>
+            <li> <i>explicit</i>: allows $p(x|y; \theta)$ and $x \sim p(x|y; \theta)$ </li>
+            <li> <i>implicit</i>: allows only $x \sim p(x|y; \theta)$ </li>
           </ul>
         </section>
 
@@ -232,20 +229,6 @@
 
         <section>
           <h3> Problem categorization </h3>
-          TODO: change conditioned in image to generated
-          <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
-          <aside class="notes">
-            I think that we could make a similar categorization of the thing we
-            want to model. So, lets say that we have a sparsely generated output if the
-            thing we model contains little information about what we ultimately
-            want to model, and a densely generated output if the thing we model contains a
-            lot of information about the thing we ultimately want to model.
-          </aside>
-        </section>
-
-        <section>
-          <h3> Problem categorization </h3>
-          TODO: translate this slide into an image.
           <ul>
             <li> densely conditioned and sparsely generated output: e.g.,
               waveform to piano-roll (low variability) </li>
@@ -274,27 +257,23 @@
 
         <section>
           <h3> Sparse condition and sparse-ish output </h3>
-          <ul>
-            <li> Olofs stuff. </lu>
-            <li> Some other stuff. </lu>
-            <li> Some other stuff. </lu>
-          </ul>
+          <img src="images/noise2midi.png" >
+          <p class ="fragment" data-audio-src="http://mogren.one/files/c-rnn-gan-sample11.mp3"> </p>
+          <p class ="fragment" data-audio-src="http://mogren.one/files/c-rnn-gan-sample.mp3"> </p>
         </section>
 
         <section>
-          <h3> Dense-ish condition and dense output </h3>
-          <ul>
-            <li> WaveNet? </lu>
-            <li> text-to-speech </lu>
-            <li> midi-to-music </lu>
-          </ul>
+          <h3> Sparse to denser to dense via symbolic representation </h3>
+          <img src="images/wave2midi2wave.png" >
+          <p class ="fragment" data-audio-src=""> </p>
+          <p class ="fragment" data-audio-src=""> </p>
         </section>
 
         <section>
           <h3> Sparse condition and dense output </h3>
-          <ul>
-            <li> WaveGAN </li>
-          </ul>
+          <img src="images/noise2wave.png" >
+          <p class ="fragment" data-audio-src=""> </p>
+          <p class ="fragment" data-audio-src=""> </p>
         </section>
 
         <section>
