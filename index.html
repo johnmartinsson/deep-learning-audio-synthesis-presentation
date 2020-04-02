@@ -132,8 +132,8 @@
           <h3> Why waveforms? </h3>
           <ul>
             <li> by modelling the waveform we are implicitly modelling the phase </li>
-            <li> waveform modelling most common in the generative setting </li>
-            <li> magnitude spectrograms most common in the discriminative setting </li>
+            <li> waveform modelling common in the generative setting </li>
+            <li> magnitude spectrograms common in the discriminative setting </li>
           </ul>
           <aside class="notes">
           </aside>
@@ -187,9 +187,9 @@
           <ul>
             <li> likelihood-based models </li>
             <ul>
-              <li> autoregressive models </li>
-              <li> flow-based models </li>
-              <li> variational autoencoders</li>
+              <li> autoregressive models: e.g., WaveNet </li>
+              <li> flow-based models: e.g., WaveGlow </li>
+              <li> variational autoencoders: not popular</li>
             </ul>
             <li> <b>adversarial models</b> </li>
           </ul>
@@ -200,6 +200,17 @@
             we can not infer the likelihood of a given data point, but we can
             sample from them.
           </aside>
+        </section>
+
+        <section>
+          <h3> Adversarial model </h3>
+          <ul>
+            <li> $\mathcal{L} = \mathbb{E}_{x} [log D(x)] + \mathbb{E}_{z}[log(1-D(G(z)))]$</li>
+            <li class="fragment"> discriminator trained to maximizes this loss </li>
+            <li class="fragment"> generator trained to minimize it</li>
+            <li class="fragment"> pro: realistic samples </li>
+            <li class="fragment"> con: usually less diverse </li>
+          </ul>
         </section>
 
         <section>
@@ -230,41 +241,56 @@
         <section>
           <h3> Problem categorization </h3>
           <ul>
-            <li> densely conditioned and sparsely generated output: e.g.,
-              waveform to piano-roll (low variability) </li>
+            <li> densely conditioned and sparsely generated output: e.g., waveform to piano-roll (low variability) </li>
             <li> sparse condition and sparse-ish output: e.g., noise to piano-roll, MIDI</li>
             <li> dense-ish condition and dense output: e.g., text or spectrogram to waveform </li>
-            <li> sparse condition and dense output: e.g., noise to waveform
-              (high variability) </li>
+            <li> sparse condition and dense output: e.g., noise to waveform (high variability) </li>
           </ul>
           <aside class="notes">
-            Progress has been made on sparsely conditioned models with sparsely
-            generated output, for example noise and the music category we want
-            to model and output a symbolic representation of that music category.
-            (TODO: examples?), we have also made progress on 
-            models, both learned from data, and defined by some well known model
-            of that sound class, but we have only just begun to make progress on
-            something-to-sound models, that take as input, for example a sound
-            class, and outputs sound. This is all very vague, so lets make this
-            a bit more precise.
+            Progress has been made on sparsely conditioned learned models with sparsely
+            generated output, for example mapping noise to a symbolic
+            representation of a certain music category.
+            We have also made progress on 
+            models, both learned from data, and manually defined models from
+            symbolic representations, such as MIDI to piano sound, but I think
+            that we have only just begun to see progress on
+            models that take as condition for example a sound
+            class, and outputs naural and realistic sound.
 
             A lot of progress has been made on
             sparse condition and sparse output models, and dense condition and
             dense output models, and we are starting to see progress on sparse
-            condition and dense output models in audio synthesis.
+            condition and dense output models in audio synthesis. In other
+            words, early work has tried to train generative models for e.g.,
+            MIDI representations and then sample from such a model and use a
+            pre-defined MIDI to sound model to finally generate a sound wave, we
+            have also seen works on learning MIDI to sound models, but we are
+            still in the early stages of generative models that are trained on
+            only sound data without intermediate representations such as MIDI,
+            or in the speech domain, text.
           </aside>
         </section>
 
         <section>
           <h3> Sparse condition and sparse-ish output </h3>
           <img src="images/noise2midi.png" >
-          <p class ="fragment" data-audio-src="http://mogren.one/files/c-rnn-gan-sample11.mp3"> </p>
-          <p class ="fragment" data-audio-src="http://mogren.one/files/c-rnn-gan-sample.mp3"> </p>
+          <p> Mogren, 2016, NeurIPS workshop </p>
+          <p class ="fragment" data-audio-src="https://mogren.one/files/c-rnn-gan-sample11.mp3"> </p>
+          <p class ="fragment" data-audio-src="https://mogren.one/files/c-rnn-gan-sample.mp3"> </p>
+          <aside class="notes">
+            <ul>
+              <li> Olof Mogrens work from 2016. </li>
+              <li> noise to MIDI generative model </li>
+              <li> C-RNN-GAN </li>
+            </ul>
+          </aside>
+
         </section>
 
         <section>
           <h3> Sparse to denser to dense via symbolic representation </h3>
           <img src="images/wave2midi2wave.png" >
+          <p> TODO: fix sound fragments. Hawthorne et. al, 2019, ICLR </p>
           <p class ="fragment" data-audio-src="https://storage.googleapis.com/magentadata/papers/maestro/full_samples/sample_0.mp3"> </p>
           <p class ="fragment" data-audio-src="https://storage.googleapis.com/magentadata/papers/maestro/full_samples/sample_0_wn.mp3"> </p>
         </section>
@@ -272,25 +298,60 @@
         <section>
           <h3> Sparse condition and dense output </h3>
           <img src="images/noise2wave.png" >
+          <p> TODO: fix sound fragments. Donahue et. al, 2019, ICLR </p>
           <p class ="fragment" data-audio-src="https://chrisdonahue.com/wavegan_examples/audio/wavegan_piano.wav"> </p>
           <p class ="fragment" data-audio-src="https://chrisdonahue.com/wavegan_examples/audio/wavegan_sc09.wav"> </p>
           <p class ="fragment" data-audio-src="https://chrisdonahue.com/wavegan_examples/audio/wavegan_birds.wav"> </p>
         </section>
 
         <section>
-          <h3> WaveGAN and SpecGAN </h3>
+          <h3> Adversarial audio synthesis (Donahue et. al, 2019)</h3>
           <ul>
-            <li> WaveGAN: alteration of DCGAN </li>
-            <li> SpecGAN: DCGAN </li>
+            <li> more likely to exhibit periodicity </li>
+            <li> correlations across large windows common </li>
+            <li> need larger receptive fields </li>
           </ul>
         </section>
 
         <section>
-          <h3> MelGAN</h3>
+          <h3> WaveGAN (Donahue et. al, 2019)</h3>
           <ul>
-            <li> TODO: talk about MelGAN </li>
-            <li> listen to examples </li>
+            <li> alteration of DCGAN </li>
+            <li> 2D kernels size 5x5 -> 1D kernels size 25</li>
+            <li> transposed stride 2 -> 4 </li>
+            <li> remove batch norm (missing ablation) </li>
+            <li> train using WGAN-GP (Gulrajani et al., 2017) strategy </li>
+            <li> add one layer: 4096 -> 16384 output </li>
           </ul>
+        </section>
+
+        <section>
+          <h3> SpecGAN (Donahue et. al, 2019)</h3>
+          <ul>
+            <li> basically DCGAN </li>
+            <li> trained on amplitude spectrograms </li>
+            <li> Griffin-Lim to estimate phase from spectrogram </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Adversarial audio synthesis (Donahue et. al, 2019)</h3>
+          <img src="images/wavegan_spectrograms.png" >
+        </section>
+
+        <section>
+          <h3> Adversarial audio synthesis (Donahue et. al, 2019)</h3>
+          <img src="images/wavegan_table.png" >
+        </section>
+
+        <section>
+          <h3> MelGAN (Kumar et. al, 2019)</h3>
+          <ul>
+            <li> learned model for Mel spectrogram inversion </li>
+          </ul>
+          <p class ="fragment" data-audio-src="audio/original.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/melgan.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/griffin_lim.wav"> </p>
         </section>
 
         <section>
