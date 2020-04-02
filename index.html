@@ -355,11 +355,40 @@
         </section>
 
         <section>
+          <h3> MelGAN: Generator </h3>
+          <ul>
+            <li> condition: mel-spectrogram </li>
+            <li> output: waveform </li>
+            <li> residual blocks with dilated convolutions </li>
+            <li> stride and kernel-size carefully chosen to mitigate "checkerboard patterns" </li>
+            <li> normaliation technique important: use weight normalization </li>
+          </ul>
+          <aside class="note">
+
+          </aside>
+        </section>
+
+        <section>
+          <h3> MelGAN: Discriminator </h3>
+          <ul>
+            <li> multi-scale architecture </li>
+            <li> $D_1$, $D_2$, $D_3$: raw audio donwsample 1, 2, and 4 respectively</li>
+            <li> intuition: each discriminator biased towards different frequecies </li>
+            <li> window-based objective </li>
+          </ul>
+          <aside class="note">
+
+          </aside>
+        </section>
+
+        <section>
           <h3> SpecGAN + MelGAN </h3>
           <ul>
-            <li> TODO: talk about combining SpecGAN and MelGAN </li>
-            <li> listen to examples </li>
+            <li> SpecGAN: noise to spectrogram </li>
+            <li> MelGAN: spectrogram to waveform</li>
           </ul>
+          <p class ="fragment" data-audio-src="audio/specgan_sc09.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/specgan_melgan_sc09.wav"> </p>
         </section>
 
 			</div>
