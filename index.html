@@ -35,6 +35,11 @@
             <li> take a look at a recently proposed adversarial methods. </li>
           </ul>
           <p class ="fragment" data-audio-src="audio/real_piano.wav"> test audio </p>
+          <aside class="notes">
+            <ul>
+              <li>end do audio test</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -43,18 +48,33 @@
             <li> Reference: "Generating music in the waveform domain", by Sander Dieleman </li>
             <li> https://benanne.github.io/2020/03/24/audio-generation.html </li>
           </ul>
+          <aside class="notes">
+            <ul>
+              <li> most of the talk is a recap of Sander Dieleman's recent blog-post</li>
+              <li> check it out if you find this interesting </li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h3> Why audio?</h3>
           <img src="https://benanne.github.io/images/player_piano.jpg">
           <aside class="notes">
+            <ul>
+              <li> early models take symbolic input </li>
+              <li> translates into sound </li>
+              <li> mechanical translation of piano-roll </li>
+              <li> mechanically moves the correct keys</li>
+            </ul>
+
+            <!--
             Some traditional music synthesis models take a symbolic
             representation of the audio as input and transforms this into sound.
             Here, we are looking at a fairly old music synthesis model of a
             piano, which takes a piano-roll as input and then the mechanical
             machinery inside the piano translates the piano-roll into
             pressing the correct piano keys. 
+            -->
           </aside>
         </section>
 
@@ -68,6 +88,17 @@
           </ul>
           -->
           <aside class="notes">
+            <ul>
+              <li> digitalization leads to digital models </li>
+              <li> digital symbolic to sound models </li>
+              <li> early research focused on generating symbolic representations </li>
+              <li> used pre-defined symbolic to sound models </li>
+              <li> first step, but in some domains we do not have access to pre-defined symbolic to sound models</li>
+              <li> promising research direction to learn such models </li>
+            </ul>
+
+
+            <!--
             With digitalization we have taken the step from such mechanical models towards
             digital models that can translate the symbolic input into music or
             audio.
@@ -80,6 +111,7 @@
             speech synthesis, we need to think about how we can create such
             models. A research direction that has shown some promise the
             last years is to learn these models from data.
+            -->
           </aside>
         </section>
 
@@ -89,6 +121,8 @@
             <li> for human and computational analysis we often use <b>spectrograms</b> </li>
             <li> shows the <b> local frequency content of the signal over time </b></li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -171,6 +205,8 @@
             <li> $x \sim p(x)$, assumed i.i.d </li>
             <li> learn generative model $p(x|\theta)$ that approximates $p(x)$ </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -183,6 +219,8 @@
             <li> <i>explicit</i>: allows $p(x|y; \theta)$ and $x \sim p(x|y; \theta)$ </li>
             <li> <i>implicit</i>: allows only $x \sim p(x|y; \theta)$ </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -214,6 +252,8 @@
             <li class="fragment"> pro: realistic samples </li>
             <li class="fragment"> con: usually less diverse </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -223,6 +263,8 @@
             roughly speaking we can make another distinction between these two
             types of models. likelihood-based models tend to be mode-covering,
             while adversarial models tend to be mode-seeking.
+          </aside>
+          <aside class="notes">
           </aside>
         </section>
 
@@ -295,6 +337,8 @@
           <p> Hawthorne et. al, 2019, ICLR </p>
           <p class ="fragment" data-audio-src="audio/sample_0.mp3"> defined MIDI to audio</p>
           <p class ="fragment" data-audio-src="audio/sample_0_wn.mp3"> learned MIDI to audio</p>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -312,11 +356,15 @@
             <li> need larger receptive fields </li>
             <li> alteration of DCGAN </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h3> DCGAN (Radford et. al, 2015)</h3>
           <img src="https://gluon.mxnet.io/_images/dcgan.png" >
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -328,6 +376,8 @@
             <li> train using WGAN-GP (Gulrajani et al., 2017) strategy </li>
             <li> add one layer: 4096 -> 16384 output </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -337,6 +387,8 @@
             <li> trained on amplitude spectrograms </li>
             <li> Griffin-Lim to estimate phase from spectrogram </li>
           </ul>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -346,6 +398,8 @@
           <p class ="fragment" data-audio-src="audio/real_piano.wav"> </p>
           <p class ="fragment" data-audio-src="audio/wavegan_piano.wav"> </p>
           <p class ="fragment" data-audio-src="audio/specgan_piano.wav"> </p>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -361,6 +415,8 @@
           <p class ="fragment" data-audio-src="audio/original.wav"> </p>
           <p class ="fragment" data-audio-src="audio/melgan.wav"> </p>
           <p class ="fragment" data-audio-src="audio/griffin_lim.wav"> </p>
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
@@ -398,7 +454,17 @@
           </ul>
           <p class ="fragment" data-audio-src="audio/specgan_sc09.wav"> </p>
           <p class ="fragment" data-audio-src="audio/specgan_melgan_sc09.wav"> </p>
+          <aside class="notes">
+          </aside>
         </section>
+
+        <section>
+          <h3> Thank you!</h3>
+          <p> Questions? </p>
+          <aside class="notes">
+          </aside>
+        </section>
+
 
 			</div>
 		</div>
