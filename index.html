@@ -404,6 +404,10 @@
           <h3> DCGAN (Radford et. al, 2015)</h3>
           <img src="https://gluon.mxnet.io/_images/dcgan.png" >
           <aside class="notes">
+            <ul>
+              <li> popularized GANs for images </li>
+              <li> transposed convolutions </li>
+            </ul>
           </aside>
         </section>
 
@@ -425,7 +429,7 @@
           <ul>
             <li> basically DCGAN </li>
             <li> trained on amplitude spectrograms </li>
-            <li> Griffin-Lim to estimate phase from spectrogram </li>
+            <li> Griffin-Lim to estimate phase from amplitude spectrogram </li>
           </ul>
           <aside class="notes">
           </aside>
@@ -435,16 +439,33 @@
           <h3> Adversarial audio synthesis (Donahue et. al, 2019)</h3>
           <img src="images/wavegan_spectrograms.png" >
 
-          <p class ="fragment" data-audio-src="audio/real_piano.wav"> </p>
-          <p class ="fragment" data-audio-src="audio/wavegan_piano.wav"> </p>
-          <p class ="fragment" data-audio-src="audio/specgan_piano.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/real_piano.wav"> real </p>
+          <p class ="fragment" data-audio-src="audio/wavegan_piano.wav"> WaveGAN </p>
+          <p class ="fragment" data-audio-src="audio/specgan_piano.wav"> SpecGAN </p>
           <aside class="notes">
+            <ul>
+              <li> listen to real piano </li>
+              <li> listen to WaveGAN piano </li>
+              <li> listen to SpecGAN piano </li>
+            </ul>
           </aside>
         </section>
 
         <section>
           <h3> Adversarial audio synthesis (Donahue et. al, 2019)</h3>
           <img src="images/wavegan_table.png" >
+          <aside class="notes">
+            <ul>
+              <li> Inception score: samples should be likely under a classifier
+                trained on the SC09 data, and the aggregate of samples should be
+                roughtly uniform </li>
+              <li> D_self: average Euclidian distance to nearest neighbour in generated samples </li>
+              <li> D_train: average Euclidian distance to nearest neighbour in training samples </li>
+              <li> Acc: not sure how this is computed </li>
+              <li> Quality, ease diversiry: Mean Opinion Score</li>
+            </ul>
+          </aside>
+
         </section>
 
         <section>
@@ -452,10 +473,15 @@
           <ul>
             <li> learned model for Mel spectrogram inversion </li>
           </ul>
-          <p class ="fragment" data-audio-src="audio/original.wav"> </p>
-          <p class ="fragment" data-audio-src="audio/melgan.wav"> </p>
-          <p class ="fragment" data-audio-src="audio/griffin_lim.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/original.wav"> original </p>
+          <p class ="fragment" data-audio-src="audio/melgan.wav"> MelGAN </p>
+          <p class ="fragment" data-audio-src="audio/griffin_lim.wav"> Griffin-Lim</p>
           <aside class="notes">
+            <ul>
+              <li> listen to original </li>
+              <li> listen to MelGAN </li>
+              <li> listen to Griffin-Lim </li>
+            </ul>
           </aside>
         </section>
 
@@ -482,6 +508,10 @@
             <li> window-based objective </li>
           </ul>
           <aside class="note">
+            <ul>
+              <li> these types of multi-scale architectures could be a step
+                towards better bias/prior for sound generation </li>
+            </ul>
 
           </aside>
         </section>
@@ -492,8 +522,8 @@
             <li> SpecGAN: noise to spectrogram </li>
             <li> MelGAN: spectrogram to waveform</li>
           </ul>
-          <p class ="fragment" data-audio-src="audio/specgan_sc09.wav"> </p>
-          <p class ="fragment" data-audio-src="audio/specgan_melgan_sc09.wav"> </p>
+          <p class ="fragment" data-audio-src="audio/specgan_sc09.wav"> SpecGAN </p>
+          <p class ="fragment" data-audio-src="audio/specgan_melgan_sc09.wav"> SpecGAN + MelGAN</p>
           <aside class="notes">
           </aside>
         </section>
