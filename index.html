@@ -122,6 +122,10 @@
             <li> shows the <b> local frequency content of the signal over time </b></li>
           </ul>
           <aside class="notes">
+          <ul>
+            <li> short-time Fourier transform of overlapping windows </li>
+            <li> complex value which represents amplitude and phase </li>
+          </ul>
           </aside>
         </section>
 
@@ -130,9 +134,19 @@
           <p> Spectrograms represent both amplitude and the phase </p>
           <img src="https://benanne.github.io/images/spectrogram_magnitude.png" class="fragment">
           <img src="https://benanne.github.io/images/spectrogram_phase.png" class="fragment">
-          <p class ="fragment" data-audio-src="https://benanne.github.io/files/original_phase.wav"> </p>
-          <p class ="fragment" data-audio-src="https://benanne.github.io/files/random_phase.wav"> </p>
+          <p class ="fragment" data-audio-src="https://benanne.github.io/files/original_phase.wav"> original </p>
+          <p class ="fragment" data-audio-src="https://benanne.github.io/files/random_phase.wav"> random </p>
           <aside class="notes">
+            <ul>
+              <li> complex valued: amplitude and phase </li>
+              <li> look at amplitude spectrogram </li>
+              <li> clearly contains a lot of structure </li>
+              <li> widely used representation for prediction tasks </li>
+              <li> phase important for perception of generated sound </li>
+              <li> listen to original signal with correct phase </li>
+              <li> listen to signal with same amplitude content but random phase </li>
+            </ul>
+            <!--
             Spectrograms are complex-valued and represent both the amplitude and
             the phase of the local frequency content of the signal over time.
             Let's look at a visualization of the amplitude component. It
@@ -151,6 +165,7 @@
             the timbre changes completely. Note also that most of us would still
             probably be able to classify the second sound as a piano, but we
             would all agree that it sounds off.
+            -->
           </aside>
         </section>
         <section>
@@ -184,6 +199,10 @@
             <li> long ranging dependencies </li>
           </ul>
           <aside class="notes">
+            <ul>
+              <li> compare to images e.g., MNIST and SC09 </li>
+            </ul>
+            <!--
             If we only consider few second segments of audio at a 44kHz sample
             rate the resolution is comparable to a high resolution image, and we
             are making substantial progress on high resolution images, so I
@@ -195,6 +214,7 @@
             data, but possibly not the whole story of why it is challenging. A
             clear difference is that we have very long ranging dependencies in
             audio, which is not as much of a problem in the image domain, 
+            -->
           </aside>
         </section>
 
@@ -235,11 +255,18 @@
             <li> <b>adversarial models</b> </li>
           </ul>
           <aside class="notes">
-            likelihood-based models are <i> explicit </i> models, meaning that
-            we can infer the likelihood of a given data point, and sample from
-            them. adversarial models are <i> implicit </i> models, meaning that
-            we can not infer the likelihood of a given data point, but we can
-            sample from them.
+            <ul>
+              <li> likelihood-based models are <i> explicit </i> models, meaning that
+              we can infer the likelihood of a given data point, and sample from
+              them. </li>
+            
+              <li> adversarial models are <i> implicit </i> models, meaning that
+              we can not infer the likelihood of a given data point, but we can
+              sample from them. </li>
+
+              <li> autoregressive models slow to sample from </li>
+              <li> flow-based models require invertible layers </li>
+            </ul>
           </aside>
         </section>
 
@@ -269,9 +296,14 @@
         </section>
 
         <section>
-          <h3> Problem categorization </h3>
+          <h3> Different conditional settings </h3>
           <img src="https://benanne.github.io/images/sparse-dense-conditioning.svg">
           <aside class="notes">
+            <ul>
+              <li> sparsely conditioned: little information about correct output </li>
+              <li> denseely conditioned: much information about correct output </li>
+            </ul>
+            <!--
             I like the categorization that Dielman does in his blog-post of
             different types of conditioning inputs. He defines a sparse
             condition as a condition that reduces the uncertainty of the correct
@@ -280,11 +312,12 @@
             say that we have a sparse condtiion if the input contains little
             information about the correct output, and we have a dense condition
             if the input contains a lot of information about the output.
+            -->
           </aside>
         </section>
 
         <section>
-          <h3> Problem categorization </h3>
+          <h3> Different conditional settings </h3>
           <ul>
             <li> densely conditioned and sparsely generated output: e.g., waveform to piano-roll (low variability) </li>
             <li> sparse condition and sparse-ish output: e.g., noise to piano-roll, MIDI</li>
@@ -292,6 +325,12 @@
             <li> sparse condition and dense output: e.g., noise to waveform (high variability) </li>
           </ul>
           <aside class="notes">
+            <ul>
+              <li> progress on sparsely conditioned with sparse output </li>
+              <li> e.g., noise to symbolic, nosie-to-MIDI, noise-to-text </li>
+              <li> only begun to see progress on sparsely conditioned with dense output </li>
+            </ul>
+            <!--
             Progress has been made on sparsely conditioned learned models with sparsely
             generated output, for example mapping noise to a symbolic
             representation of a certain music category.
@@ -313,6 +352,7 @@
             still in the early stages of generative models that are trained on
             only sound data without intermediate representations such as MIDI,
             or in the speech domain, text.
+            -->
           </aside>
         </section>
 
